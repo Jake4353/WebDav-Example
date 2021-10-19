@@ -1,23 +1,23 @@
 from webdav3.client import Client
 import os
 
-
+#login for your WebDav server
 options ={
- 'webdav_hostname': '',
- 'webdav_login':    '',
- 'webdav_password': ''
+ 'webdav_hostname': '', #for example, http://123.21.0.1/directory (not a real IP, just random numbers)
+ 'webdav_login':    '', #not very private, just a username
+ 'webdav_password': '' #password for you WebDav server
 }
 
+#i dont think this does anything lol
 try:
     print('active')
 except WebDavException as e:
     print(e)
 
-
-
-
+#selection to select an action
 text = "Actions:\n1) Upload file\n2) Info\n3) Make Directory\n4) Check existence of the resource\n5) Download Resource\n6) Help\nEnter here: "
 
+#asks what action you would like to perform
 action = str(input(text))
 
 str = False
@@ -25,6 +25,7 @@ if str == True:
     print('Please input a number instead of a string of text!')
 else:
 
+    #upload file
     if action == "1":
         client = Client(options)
         client.verify = True
@@ -36,6 +37,7 @@ else:
         else:
             client.upload_sync(remote_path='/' + dir + '/' + dir2, local_path="./" + dir2)
 
+    #meta data on a spesific file
     if action == '2':
         client = Client(options)
         client.verify = True
@@ -43,6 +45,7 @@ else:
         info = client.info(infodir)
         print(info)
 
+     #make folder
     if action == '3':
         dirname = input('Directory name: ')
         dirpath = input('Directory Path: ')
@@ -50,6 +53,7 @@ else:
         client.verify = True
         client.execute_request('mkdir', "/" + dirpath + '/' + dirname)
 
+    #check if a resource already exist
     if action == '4':
         dircheck = input('What directory would you like to check a file in?: ')
         filecheck = input('What file would you like to check?: ')
@@ -60,7 +64,8 @@ else:
             print('File already exists!')
         else:
             print('File does not exist!')
-
+ 
+    #download file
     if action == '5':
         client = Client(options)
         client.verify = True
@@ -82,3 +87,7 @@ else:
                 f.close()
                 client.download_sync(remote_path=dir + '/' + downloadahh, local_path='new/d' + name + '.' + filetype)
                 print('new/d~' + name + '.' + filetype)
+
+#-------------------------------------Made By-------------------------------------
+#-------------------------------------Cowski!-------------------------------------
+#     Cowski#1234
