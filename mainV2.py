@@ -1,7 +1,7 @@
 from webdav3.client import Client
 import os
 from pprint import pprint
-from os import system, name
+from os import system
 from time import sleep
 
 options ={
