@@ -1,10 +1,6 @@
 from webdav3.client import Client
 import os
-import subprocess
-import tkinter as tk
-from tkinter import ttk
-from tkinter import filedialog as fd
-from tkinter.messagebox import showinfo
+
 
 options ={
  'webdav_hostname': '',
